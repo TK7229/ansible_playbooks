@@ -1,0 +1,8 @@
+- name: Create cluster
+      netapp.ontap.na_ontap_cluster:
+        state: present
+        cluster_name: new_cluster
+        time_out: 0
+        hostname: "{{ netapp_hostname }}"
+        username: "{{ netapp_username }}"
+        password: "{{ netapp_password }}"
