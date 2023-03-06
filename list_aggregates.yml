@@ -9,9 +9,12 @@
 
   module_defaults:
     group/netapp.ontap.netapp_ontap:
-      hostname: '{{ clusters.cluster1.admin_ip }}'
-      username: '{{ clusters.cluster1.admin_username }}'
-      password: '{{ clusters.cluster1.admin_password }}'
+      hostname: 192.168.77.140
+      username: admin
+      password: Netapp1!
+     #hostname: '{{ clusters.cluster1.admin_ip }}'
+      #username: '{{ clusters.cluster1.admin_username }}'
+      #password: '{{ clusters.cluster1.admin_password }}'
       https: true
       validate_certs: false
 
