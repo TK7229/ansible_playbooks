@@ -1,7 +1,7 @@
 ---
 
 -name Example Simple Playbook
- hosts: 192.168.77.140
+ hosts: local
  become: yes
 
  tasks:
@@ -15,6 +15,9 @@
    lock_user: True
    role_name: vsadmin
    vserver: ansibleVServer
-   hostname: "{{ netapp_hostname }}"
-   username: "{{ netapp_username }}"
-   password: "{{ netapp_password }}"
+   hostname: 192.168.77.140
+   username: admin
+   password: Netapp1!
+   #hostname: "{{ netapp_hostname }}"
+   #username: "{{ netapp_username }}"
+   #password: "{{ netapp_password }}"
