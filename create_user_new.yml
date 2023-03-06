@@ -1,7 +1,7 @@
 ---
 
 -name Example Simple Playbook
- hosts: all
+ hosts: 192.168.77.140
  become: yes
 
  tasks:
