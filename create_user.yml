@@ -1,3 +1,5 @@
+---
+
 - name: Create User
   netapp.ontap.na_ontap_user:
     state: present
