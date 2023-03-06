@@ -2,10 +2,21 @@
 
 -
   name: Example Simple Playbook
+  gather_facts: false
   hosts: local
-  become: yes
   collections:
     - netapp.ontap
+    
+  module_defaults:
+    group/netapp.ontap.netapp_ontap:
+      hostname: 192.168.77.140
+      username: admin
+      password: Netapp1!
+     #hostname: '{{ clusters.cluster1.admin_ip }}'
+      #username: '{{ clusters.cluster1.admin_username }}'
+      #password: '{{ clusters.cluster1.admin_password }}'
+      https: true
+      validate_certs: false
 
  tasks:
    - name: Create User
@@ -18,9 +29,3 @@
      lock_user: True
      role_name: vsadmin
      vserver: ansibleVServer
-     hostname: 192.168.77.140
-     username: admin
-     password: Netapp1!
-     #hostname: "{{ netapp_hostname }}"
-     #username: "{{ netapp_username }}"
-     #password: "{{ netapp_password }}"
