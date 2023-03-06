@@ -2,6 +2,11 @@
 
 - 
   name: Create User
+  gather_facts: false
+  host: local
+  collections:
+    - netapp.ontap
+    
   netapp.ontap.na_ontap_user:
     state: present
     name: SampleUser
