@@ -1,8 +1,11 @@
 ---
 
--name Example Simple Playbook
- hosts: local
- become: yes
+-
+  name: Example Simple Playbook
+  hosts: local
+  become: yes
+  collections:
+    - netapp.ontap
 
  tasks:
  - name: Create User
