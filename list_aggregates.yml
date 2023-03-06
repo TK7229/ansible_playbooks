@@ -3,7 +3,7 @@
 -
   name: ONTAP list aggregates
   gather_facts: false
-  hosts: locak
+  hosts: local
   collections:
     - netapp.ontap
 
