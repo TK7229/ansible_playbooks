@@ -19,4 +19,4 @@
        use_rest: Always
        gather_subset:
           - storage/aggregates
-        fields: 'block_storage,space'
+        #fields: 'block_storage,space'
