@@ -8,4 +8,5 @@
     - netapp.ontap
 
   tasks:
-  list_aggregates.yaml -e@clusters.yaml
+  
+    - list_aggregates.yaml -e@clusters.yaml
