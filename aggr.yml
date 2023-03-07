@@ -18,4 +18,5 @@
        validate_certs: false
        use_rest: Always
        gather_subset:
-          - storage/aggregates
+          #- storage/aggregates
+          - cluster/licensing/licenses or license_info
