@@ -1,9 +1,9 @@
 ---
 
 -
-  name: ONTAP Create User
+  name: List Aggregate
   gather_facts: false
-  hosts: cluster-ontap
+  hosts: local
   collections:
     - netapp.ontap
     
