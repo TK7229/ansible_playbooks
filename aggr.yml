@@ -11,9 +11,9 @@
   
   - name: run ONTAP gather facts for vserver info
     netapp.ontap.na_ontap_rest_info:
-       hostname: "1.2.3.4"
-       username: "testuser"
-       password: "test-password"
+       hostname: "192.168.77.140"
+       username: "admin"
+       password: "Netapp1!"
        https: true
        validate_certs: false
        use_rest: Always
