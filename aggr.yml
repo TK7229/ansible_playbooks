@@ -7,6 +7,7 @@
   collections:
     - netapp.ontap
 
-  roles:
+  tasks:
   
-    - list_aggregates.yml -e@clusters.yml
+    - import_playbook: list_aggregates.yml
+    - import_playbook: clusters.yml
