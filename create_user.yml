@@ -12,13 +12,13 @@
   - name: Create User
     netapp.ontap.na_ontap_user:
     state: present
-    name: SampleUser
+    name: patrick
     applications: ssh,console
     authentication_method: password
     set_password: apn1242183u1298u41
     lock_user: True
-    role_name: vsadmin
-    vserver: ansibleVServer
+    role_name: admin
+    vserver: cluster-ontap
     hostname: "{{ netapp_hostname }}"
     username: "{{ netapp_username }}"
     password: "{{ netapp_password }}"
