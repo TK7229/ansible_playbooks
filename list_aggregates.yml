@@ -3,18 +3,15 @@
 -
   name: ONTAP list aggregates
   gather_facts: false
-  hosts: local
+  hosts: localhost
   collections:
     - netapp.ontap
 
   module_defaults:
     group/netapp.ontap.netapp_ontap:
-      hostname: 192.168.77.140
-      username: admin
-      password: Netapp1!
-     #hostname: '{{ clusters.cluster1.admin_ip }}'
-      #username: '{{ clusters.cluster1.admin_username }}'
-      #password: '{{ clusters.cluster1.admin_password }}'
+      hostname: '{{ clusters.cluster1.admin_ip }}'
+      username: '{{ clusters.cluster1.admin_username }}'
+      password: '{{ clusters.cluster1.admin_password }}'
       https: true
       validate_certs: false
 
