@@ -7,6 +7,6 @@
   collections:
     - netapp.ontap
 
-  tasks:
+  roles:
   
     - list_aggregates.yml -e@clusters.yml
