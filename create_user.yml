@@ -3,7 +3,7 @@
 -
   name: ONTAP Create User
   gather_facts: false
-  hosts: cluster-ontap
+  hosts: localhost
   collections:
     - netapp.ontap
     
@@ -11,14 +11,17 @@
   
     - name: Create User
       netapp.ontap.na_ontap_user:
-      state: present
-      name: SampleUser
+         hostname: "192.168.77.140"
+         username: "admin"
+         password: "Netapp1!"
+         https: true
+         validate_certs: false
+         use_rest: Always
+         state: present
+         name: patrick
       applications: ssh,console
       authentication_method: password
-      set_password: apn1242183u1298u41
-      lock_user: True
+      set_password: test123
+      lock_user: false
       role_name: vsadmin
-      vserver: ansibleVServer
-      hostname: "{{ netapp_hostname }}"
-      username: "{{ netapp_username }}"
-      password: "{{ netapp_password }}"
+      vserver: cluster-ontap
