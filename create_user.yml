@@ -9,7 +9,7 @@
     
   tasks:
   
-  - name: Create Adminuser
+  - name: Create usr
     netapp.ontap.na_ontap_user:
     state: present
     name: patrick
