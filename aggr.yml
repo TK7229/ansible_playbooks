@@ -9,7 +9,7 @@
     
   tasks:
   
-  - name: run ONTAP gather facts for vserver info
+  - name: run ONTAP gather facts for aggregate info
     netapp.ontap.na_ontap_rest_info:
        hostname: "192.168.77.140"
        username: "admin"
@@ -19,4 +19,3 @@
        use_rest: Always
        gather_subset:
           - storage/aggregates
-        #fields: 'block_storage,space'
