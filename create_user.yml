@@ -7,6 +7,7 @@
   tasks:
   - name: Create User
     netapp.ontap.na_ontap_user:
+    use_rest: Always
     state: present
     name: patrick
     applications: ssh,console
