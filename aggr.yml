@@ -8,4 +8,4 @@
     - netapp.ontap
 
   tasks:
-  ansible-playbook list_aggregates.yaml -e@clusters.yaml
+  list_aggregates.yaml -e@clusters.yaml
