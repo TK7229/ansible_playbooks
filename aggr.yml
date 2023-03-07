@@ -1,13 +1,21 @@
 ---
 
 -
-  name: ONTAP list aggregates
+  name: ONTAP Create User
   gather_facts: false
-  hosts: localhost
+  hosts: cluster-ontap
   collections:
     - netapp.ontap
-
+    
   tasks:
   
-    - import_playbook: list_aggregates.yml
-    - import_playbook: clusters.yml
+  - name: run ONTAP gather facts for vserver info
+    netapp.ontap.na_ontap_rest_info:
+       hostname: "1.2.3.4"
+       username: "testuser"
+       password: "test-password"
+       https: true
+       validate_certs: false
+       use_rest: Always
+       gather_subset:
+        - svm/svms
