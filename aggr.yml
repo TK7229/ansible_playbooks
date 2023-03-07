@@ -9,4 +9,4 @@
 
   tasks:
   
-    - list_aggregates.yaml -e@clusters.yaml
+    - list_aggregates.yml -e@clusters.yml
