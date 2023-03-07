@@ -11,17 +11,14 @@
   
     - name: Create User
       netapp.ontap.na_ontap_user:
-         hostname: "192.168.77.140"
-         username: "admin"
-         password: "Netapp1!"
-         https: true
-         validate_certs: false
-         use_rest: Always
-         state: present
-         name: patrick
+      state: present
+      name: patrick
       applications: ssh,console
       authentication_method: password
       set_password: test123
-      lock_user: false
+      lock_user: True
       role_name: vsadmin
       vserver: cluster-ontap
+      hostname: "192.168.77.140"
+      username: "admin"
+      password: "Netapp1!"
