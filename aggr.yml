@@ -19,4 +19,4 @@
        use_rest: Always
        gather_subset:
           #- storage/aggregates
-          - cluster/licensing/licenses or license_info
+          - cluster
