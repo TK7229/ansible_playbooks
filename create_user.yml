@@ -1,7 +1,6 @@
 ---
 
 -
-  name: ONTAP Create User
   gather_facts: false
   hosts: localhost
   collections:
@@ -9,7 +8,7 @@
     
   tasks:
   
-  - 
+  - name: Create User
     netapp.ontap.na_ontap_user:
     state: present
     name: patrick
