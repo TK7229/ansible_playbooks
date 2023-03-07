@@ -18,5 +18,5 @@
        validate_certs: false
        use_rest: Always
        gather_subset:
-          #- storage/aggregates
-          - cluster
+          - storage/aggregates
+          - storage/volumes
