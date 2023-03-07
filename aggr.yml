@@ -3,7 +3,7 @@
 -
   name: List Aggregate
   gather_facts: false
-  hosts: local
+  hosts: localhost
   collections:
     - netapp.ontap
     
