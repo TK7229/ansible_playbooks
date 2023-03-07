@@ -18,4 +18,5 @@
        validate_certs: false
        use_rest: Always
        gather_subset:
-        - svm/svms
+          - storage/aggregates
+        fields: 'block_storage,space'
