@@ -9,7 +9,7 @@
     
   tasks:
 
-  - name: run ontap cli command
+  - name: "run ontap cli command"
     netapp.ontap.na_ontap_command:
     hostname: "192.168.77.140"
     #hostname: "192.168.20.140"
