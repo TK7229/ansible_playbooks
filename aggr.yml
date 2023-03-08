@@ -21,5 +21,7 @@
        gather_subset:
           - storage/aggregates
           - storage/volumes
+          
+  - name: "Output"
        register: aggr   
-  - debug: var=aggr.stdout_lines
+       debug: var=aggr.stdout_lines
