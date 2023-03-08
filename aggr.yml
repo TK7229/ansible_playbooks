@@ -22,5 +22,4 @@
           - storage/aggregates
           - storage/volumes
        register: aggr   
-       debug:
-       msg: "{{ aggr.stdout }}"
+  - debug: var=aggr.stdout_lines
