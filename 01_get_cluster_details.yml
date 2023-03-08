@@ -28,7 +28,7 @@
       https:          true
       validate_certs: false
   vars_files:
-    - ../global.vars
+    - global.yml
   collections:
     - netapp.ontap
 
