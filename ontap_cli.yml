@@ -6,13 +6,15 @@
   hosts: localhost
   collections:
     - netapp.ontap
+    
+  tasks:
 
-- name: run ontap cli command
-  netapp.ontap.na_ontap_command:
-  hostname: "192.168.77.140"
-  #hostname: "192.168.20.140"
-  username: "admin"
-  password: "Netapp1!"
-  command: ['node', 'show', '-fields', 'node,health,uptime,model']
-  privilege: 'admin'
-  return_dict: true
+  - name: run ontap cli command
+    netapp.ontap.na_ontap_command:
+    hostname: "192.168.77.140"
+    #hostname: "192.168.20.140"
+    username: "admin"
+    password: "Netapp1!"
+    command: ['node', 'show', '-fields', 'node,health,uptime,model']
+    privilege: 'admin'
+    return_dict: true
