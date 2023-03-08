@@ -8,11 +8,11 @@
     - netapp.ontap
     
   tasks:
+  
   - name: run ontap rest cli command
     netapp.ontap.na_ontap_rest_cli:
-    hostname: "192.168.77.140"
-    #hostname: "192.168.20.140"
-    username: "admin"
-    password: "Netapp1!"
+    hostname: "{{ hostname }}"
+    username: "{{ admin username }}"
+    password: "{{ admin password }}"
     command: 'version'
     verb: 'GET'
