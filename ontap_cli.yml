@@ -10,6 +10,7 @@
   tasks:
   
   - name: run ontap rest cli command
+    include: clusters.yml
     netapp.ontap.na_ontap_rest_cli:
     hostname: "{{ hostname }}"
     username: "{{ admin username }}"
