@@ -1,3 +1,12 @@
+---
+
+-
+  name: "ONTAP CLI Commands"
+  gather_facts: false
+  hosts: localhost
+  collections:
+    - netapp.ontap
+
 - name: run ontap cli command
   netapp.ontap.na_ontap_command:
     hostname: "{{ hostname }}"
