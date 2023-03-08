@@ -1,8 +1,9 @@
 ---
 
 - 
-  hosts: localhost
+  name: REST API CLI
   gather_facts: false
+  hosts: localhost
   vars:
     input: &input
       hostname:       "{{ PRI_CLU }}"
@@ -18,7 +19,7 @@
   tasks:
   
    - name: Get Ontap Info
-     na_ontap_info:
+     netapp.ontap.na_ontap_info:
       state: info
       gather_subset:
         - cluster_identity_info
