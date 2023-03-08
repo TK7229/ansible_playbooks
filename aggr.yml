@@ -22,7 +22,5 @@
           - storage/aggregates
           - storage/volumes
        register: aggr   
-         
-    - name: "Output"
-    debug:
-      msg: "{{ aggr.stdout }}"
+       debug:
+       msg: "{{ aggr.stdout }}"
