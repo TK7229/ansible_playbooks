@@ -11,12 +11,8 @@
   
   - name: run ontap rest cli command
     netapp.ontap.na_ontap_rest_cli:
-    hostname: "192.168.77.140"
-    #hostname: "192.168.20.140"
-    username: "admin"
-    password: "Netapp1!"
-    https: true
-    validate_certs: false
-    use_rest: Always
-    command: 'version'
-    verb: 'GET'
+    command: 'vserver/services/access-check/authentication/get-dc-info'  
+    verb: 'POST'
+    body: {vserver: "{{ vserver_name }}"}
+    <<: *login
+    register: result_cifs_check_access
