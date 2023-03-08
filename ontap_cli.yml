@@ -12,7 +12,7 @@
   - name: run ontap rest cli command
     include: clusters.yml
     netapp.ontap.na_ontap_rest_cli:
-    hostname: "{{ hostname }}"
+    hostname: "{{ admin_ips[0] }}"
     username: "{{ admin username }}"
     password: "{{ admin password }}"
     command: 'version'
