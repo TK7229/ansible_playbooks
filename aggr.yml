@@ -9,7 +9,7 @@
     
   tasks:
   
-  - name: run ONTAP gather facts for aggregate info
+  - name: "run ONTAP gather facts for aggregate info"
     netapp.ontap.na_ontap_rest_info:
        #hostname: "192.168.77.140"
        hostname: "192.168.20.140"
@@ -21,4 +21,8 @@
        gather_subset:
           - storage/aggregates
           - storage/volumes
-       msg: "{{ host.stdout }}"
+       register: aggr   
+         
+    - name: "Output"
+    debug:
+      msg: "{{ aggr.stdout }}"
