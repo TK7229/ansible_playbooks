@@ -9,10 +9,10 @@
     
   tasks:
   
-  - name: run ontap rest cli command
-    netapp.ontap.na_ontap_rest_cli:
-    command: 'vserver/services/access-check/authentication/get-dc-info'  
-    verb: 'POST'
-    body: {vserver: "{{ vserver_name }}"}
-    <<: *login
-    register: result_cifs_check_access
+   - name: run ontap rest cli command
+     netapp.ontap.na_ontap_rest_cli:
+     hostname: '192.168.77.140'
+     username: 'admin'
+     password: 'Netapp1!'
+     command: 'version'
+     verb: 'GET'
