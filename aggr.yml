@@ -21,3 +21,4 @@
        gather_subset:
           - storage/aggregates
           - storage/volumes
+       register: results
