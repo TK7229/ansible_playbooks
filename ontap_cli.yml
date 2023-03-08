@@ -11,8 +11,12 @@
   
   - name: run ontap rest cli command
     netapp.ontap.na_ontap_rest_cli:
-    hostname: "{{ admin_ips[0] }}"
-    username: "{{ admin username }}"
-    password: "{{ admin password }}"
+    hostname: "192.168.77.140"
+    #hostname: "192.168.20.140"
+    username: "admin"
+    password: "Netapp1!"
+    https: true
+    validate_certs: false
+    use_rest: Always
     command: 'version'
     verb: 'GET'
