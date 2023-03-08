@@ -4,13 +4,13 @@
   name: CLI
   gather_facts: false
   hosts: localhost
+  include: clusters.yml
   collections:
     - netapp.ontap
     
   tasks:
   
   - name: run ontap rest cli command
-    include: clusters.yml
     netapp.ontap.na_ontap_rest_cli:
     hostname: "{{ admin_ips[0] }}"
     username: "{{ admin username }}"
