@@ -11,8 +11,8 @@
   
   - name: "run ONTAP gather facts for aggregate info"
     netapp.ontap.na_ontap_rest_info:
-       #hostname: "192.168.77.140"
-       hostname: "192.168.20.140"
+       hostname: "192.168.77.140"
+       #hostname: "192.168.20.140"
        username: "admin"
        password: "Netapp1!"
        https: true
