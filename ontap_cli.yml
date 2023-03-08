@@ -11,7 +11,7 @@
   
   - name: run ontap rest cli command
     netapp.ontap.na_ontap_rest_cli:
-    #hostname: "{{ hostname }}"
+    hostname: "{{ hostname }}"
     username: "{{ admin username }}"
     password: "{{ admin password }}"
     command: 'version'
