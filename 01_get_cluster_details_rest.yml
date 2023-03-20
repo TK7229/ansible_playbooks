@@ -37,8 +37,5 @@
     na_ontap_rest_info:
       gather_subset:
         - cluster_node_info
-      hostname: "192.168.77.140"
-      username: "admin"
-      password: "Netapp1!"
       https: true
       validate_certs: false
