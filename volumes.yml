@@ -8,7 +8,7 @@
     admin_ip: 192.168.77.140
     admin_username: admin
     admin_password: Netapp1!
-    svm_name: ansibleSVM
+    svm_name: cifs
 
     login: &login
       hostname: "{{ admin_ip }}"
