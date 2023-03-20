@@ -45,7 +45,7 @@
           query_fields: name
           query: "{{ svm_name }}"
         hal_linking: true
-      register: result
+      register: result_aggr
 
     - name: run ontap REST API command as cluster admin - delete volume
       tags: create
@@ -66,8 +66,7 @@
         api: storage/volumes
         body:
           name: deleteme_ln1
-          aggregates.name:
-            - aggr0_data
+          aggregates.name: "{{ result_aggr }}"
           svm.name: "{{ svm_name }}"
         method: POST
         wait_for_completion: true
@@ -81,8 +80,7 @@
         api: storage/volumes
         body:
           name: deleteme_ln1
-          aggregates.name:
-            - aggr0_data
+          aggregates.name: "{{ result_aggr }}"
           svm.name: "{{ svm_name }}"
         method: POST
         wait_for_completion: true
