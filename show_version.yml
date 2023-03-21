@@ -27,6 +27,7 @@
         query:
           fields: version
       register: result
-    - debug:
-         var: result.json.value
+    - set_fact:
+            dataresult: "{{ result.stdout ¦ from_json }}"
+    - debug: var=dataresult
     - assert: {that: result.status_code==200, quiet: true}
