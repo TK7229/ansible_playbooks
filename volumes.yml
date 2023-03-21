@@ -27,9 +27,10 @@
         query:
           fields: version
       register: result
-    - assert: {that: result.status_code==200, quiet: true}
     - debug:
          var: result.json.value
+    - assert: {that: result.status_code==200, quiet: true}
+    
     
 
     - name: run ontap REST API command as cluster admin - get list of SVMs
