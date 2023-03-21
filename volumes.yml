@@ -105,5 +105,8 @@
         method: PATCH
         wait_for_completion: true
       register: result
+      
+    - debug:
+         var: result.json.value
 
  
