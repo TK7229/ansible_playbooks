@@ -20,15 +20,17 @@
         trace_apis: true
 
   tasks:
+    - debug:
+        msg: "run ontap REST API command as cluster admin - get version"
     - name: run ontap REST API command as cluster admin - get version
       na_ontap_restit:
         <<: *login
         api: cluster/software
         query:
           fields: version
-      register: result
+      register: results
     - debug:
-         var: result.json.value
+         var: results.json.value
     - assert: {that: result.status_code==200, quiet: true}
     
     
