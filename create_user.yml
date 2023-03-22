@@ -1,22 +1,4 @@
-#!/usr/bin/env ansible-playbook
-
-################################################################################
-#
-# Title:        01_get_cluster_details.yml
-# Author:       Adrian Bronder
-# Date:         2020-03-18
-# Description:  Get cluster information
-#               with Ansible modules
-#
-# Modules:      na_ontap_info
-#
-# URLs:         http://docs.netapp.com/ontap-9/index.jsp
-#               https://galaxy.ansible.com/netapp/ontap
-#
-# Built-in help:
-# ansible-doc netapp.ontap.na_ontap_info
-#
-################################################################################
+---
 
 - 
   name: ONTAP REST API
