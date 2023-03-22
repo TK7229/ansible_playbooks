@@ -1,13 +1,13 @@
-- 
-  name: ONTAP REST API
+---
+- name: ONTAP REST API
+  become: false
   hosts: localhost
   gather_facts: false
   collections:
     - netapp.ontap
 
-tasks:
-- 
-  name: Create user
+  tasks:
+    - name: Create user
       netapp.ontap.na_ontap_user:
         state: present
         name: test123
