@@ -18,7 +18,9 @@
 #
 ################################################################################
 
-- hosts: localhost
+- 
+  name: ONTAP REST API
+  hosts: localhost
   gather_facts: false
   vars:
     input: &input
