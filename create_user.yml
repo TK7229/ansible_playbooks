@@ -22,15 +22,6 @@
   name: ONTAP REST API
   hosts: localhost
   gather_facts: false
-  vars:
-    input: &input
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      validate_certs: false
-  vars_files:
-    - global.yml
   collections:
     - netapp.ontap
 
@@ -47,6 +38,6 @@ tasks:
         role_name: admin
         set_password: bobdole1234566
         vserver: cluster-home
-        #hostname: "{{ hostname }}"
-        #username: "{{ username }}"
-        #password: "{{ password }}"
+        hostname: "192.168.20.140"
+        username: "admin"
+        password: "Netapp1!"
