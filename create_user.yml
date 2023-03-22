@@ -33,7 +33,7 @@
     - netapp.ontap
 
 tasks:
-- name: Create user
+    - name: Create user
       netapp.ontap.na_ontap_user:
         state: present
         name: test123
