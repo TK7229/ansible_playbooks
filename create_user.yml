@@ -43,6 +43,3 @@ tasks:
         lock_user: false
         role_name: admin
         vserver: cluster-home
-        hostname: "{{ netapp_hostname }}"
-        username: "{{ netapp_username }}"
-        password: "{{ netapp_password }}"
