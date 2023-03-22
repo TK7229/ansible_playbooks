@@ -33,13 +33,18 @@
     - netapp.ontap
 
 tasks:
-- name: Create User
+- name: Create user
       netapp.ontap.na_ontap_user:
         state: present
-        name: SampleUser
-        applications: ssh,console
-        authentication_method: password
-        set_password: apn1242183u1298u41
-        lock_user: false
+        name: test123
+        application_dicts:
+          - application: http
+            authentication_methods: password
+          - application: ssh
+            authentication_methods: password,publickey
         role_name: admin
+        set_password: bobdole1234566
         vserver: cluster-home
+        #hostname: "{{ hostname }}"
+        #username: "{{ username }}"
+        #password: "{{ password }}"
