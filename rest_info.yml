@@ -19,29 +19,29 @@
     na_ontap_rest_info:
       gather_subset:
         - cluster_node_info
-      hostname: "192.168.20.140"
-      username: "admin"
-      password: "Netapp1!"
-      https: true
+      hostname:       "{{ PRI_CLU }}"
+      username:       "{{ PRI_CLU_USER }}"
+      password:       "{{ PRI_CLU_PASS }}"
+      https:          true
       validate_certs: false
 
 
   - name: run ONTAP gather facts for vserver info
     na_ontap_rest_info:
-      hostname: "1.2.3.4"
-      username: "testuser"
-      password: "test-password"
-      https: true
+      hostname:       "{{ PRI_CLU }}"
+      username:       "{{ PRI_CLU_USER }}"
+      password:       "{{ PRI_CLU_PASS }}"
+      https:          true
       validate_certs: false
       use_rest: Always
       gather_subset:
       - vserver_info
   - name: run ONTAP gather facts for aggregate info and volume info
     na_ontap_rest_info:
-      hostname: "1.2.3.4"
-      username: "testuser"
-      password: "test-password"
-      https: true
+      hostname:       "{{ PRI_CLU }}"
+      username:       "{{ PRI_CLU_USER }}"
+      password:       "{{ PRI_CLU_PASS }}"
+      https:          true
       validate_certs: false
       use_rest: Always
       gather_subset:
@@ -49,20 +49,20 @@
       - volume_info
   - name: run ONTAP gather facts for all subsets
     na_ontap_rest_info:
-      hostname: "1.2.3.4"
-      username: "testuser"
-      password: "test-password"
-      https: true
+      hostname:       "{{ PRI_CLU }}"
+      username:       "{{ PRI_CLU_USER }}"
+      password:       "{{ PRI_CLU_PASS }}"
+      https:          true
       validate_certs: false
       use_rest: Always
       gather_subset:
       - all
   - name: run ONTAP gather facts for aggregate info and volume info with fields section
     na_ontap_rest_info:
-      hostname: "1.2.3.4"
-      username: "testuser"
-      password: "test-password"
-      https: true
+      hostname:       "{{ PRI_CLU }}"
+      username:       "{{ PRI_CLU_USER }}"
+      password:       "{{ PRI_CLU_PASS }}"
+      https:          true
       fields:
       - '*'
       validate_certs: false
@@ -72,10 +72,10 @@
       - volume_info
   - name: run ONTAP gather facts for aggregate info with specified fields
     na_ontap_rest_info:
-      hostname: "1.2.3.4"
-      username: "testuser"
-      password: "test-password"
-      https: true
+      hostname:       "{{ PRI_CLU }}"
+      username:       "{{ PRI_CLU_USER }}"
+      password:       "{{ PRI_CLU_PASS }}"
+      https:          true
       fields:
       - 'uuid'
       - 'name'
