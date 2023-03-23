@@ -44,12 +44,4 @@
   
    
    
-   - name: 'https://<mgmt-ip>/api/security/accounts'
-     na_ontap_restit:
-       <<: *login
-       api: "security/accounts/{{"name":"cluster_user1","applications":[{"application":"ssh","authentication_methods":["password"],"second_authentication_method":"none"},{"application":"http","authentication_methods":["password"]}],"role":"admin","password":"p@ssw@rd123"}}"
-       method: POST
-       vserver_name: cluster-ontap
-      register: result
-    - debug: var=result
-    - assert: { that: result.status_code==200, quiet: True }
+
