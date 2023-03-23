@@ -16,8 +16,8 @@
 
       - name: Create user
       netapp.ontap.na_ontap_user:
-      state: present
-      name: test123
+        state: present
+        name: test123
       application_dicts:
       - application: http
         authentication_methods: password
