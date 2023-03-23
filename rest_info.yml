@@ -45,7 +45,6 @@
    
    
    - name: 'https://<mgmt-ip>/api/security/accounts'
-     uri:
      url: 'https://192.168.77.140/api/security/accounts'
      method: POST
      body: '{"name":"cluster_user1","applications":[{"application":"ssh","authentication_methods":["password"],"second_authentication_method":"none"},{"application":"http","authentication_methods":["password"]}],"role":"admin","password":"p@ssw@rd123"}'
