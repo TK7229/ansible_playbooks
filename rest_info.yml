@@ -27,7 +27,7 @@
 
 
 - name: run ONTAP gather facts for vserver info
-  na_ontap_info_rest:
+  na_ontap_rest_info:
       hostname: "1.2.3.4"
       username: "testuser"
       password: "test-password"
@@ -37,7 +37,7 @@
       gather_subset:
       - vserver_info
 - name: run ONTAP gather facts for aggregate info and volume info
-  na_ontap_info_rest:
+  na_ontap_rest_info:
       hostname: "1.2.3.4"
       username: "testuser"
       password: "test-password"
@@ -48,7 +48,7 @@
       - aggregate_info
       - volume_info
 - name: run ONTAP gather facts for all subsets
-  na_ontap_info_rest:
+  na_ontap_rest_info:
       hostname: "1.2.3.4"
       username: "testuser"
       password: "test-password"
@@ -58,7 +58,7 @@
       gather_subset:
       - all
 - name: run ONTAP gather facts for aggregate info and volume info with fields section
-  na_ontap_info_rest:
+  na_ontap_rest_info:
       hostname: "1.2.3.4"
       username: "testuser"
       password: "test-password"
@@ -71,7 +71,7 @@
       - aggregate_info
       - volume_info
 - name: run ONTAP gather facts for aggregate info with specified fields
-  na_ontap_info_rest:
+  na_ontap_rest_info:
       hostname: "1.2.3.4"
       username: "testuser"
       password: "test-password"
