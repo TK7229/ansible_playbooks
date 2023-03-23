@@ -1,10 +1,22 @@
 ---
-- name: ONTAP REST API
-  become: false
+- 
+  name: ONTAP REST API
   hosts: localhost
   gather_facts: false
   collections:
     - netapp.ontap
+  vars:
+    PRI_CLU: 192.168.77.140
+    PRI_CLU_USER: admin
+    PRI_CLU_PASS: Netapp1!
+    svm_name: cluster-ontap
+  
+    login: &login
+      hostname: "{{ PRI_CLU }}"
+      username: "{{ PRI_CLU_USER }}"
+      password: "{{ PRI_CLU_PASS }}"
+      https:  true
+      validate_certs: false
 
   tasks:
     - name: Create user
@@ -18,7 +30,5 @@
             authentication_methods: password,publickey
         role_name: admin
         set_password: bobdole1234566
-        vserver: cluster-home
-        hostname: "192.168.20.140"
-        username: "admin"
-        password: "Netapp1!"
+        vserver: cluster-ontap
+        
