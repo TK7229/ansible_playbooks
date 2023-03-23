@@ -32,15 +32,6 @@
      register: result
    - debug: var=result
    - assert: { that: result.status_code==200, quiet: True }
-   
-   
-   - name: run ontap REST API command as cluster admin
-     na_ontap_restit:
-        <<: *login
-        api: security/accounts
-        query:
-          fields: 'security login show'
-     register: result
   
    
    
