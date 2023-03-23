@@ -19,20 +19,19 @@
       validate_certs: false
 
   tasks:
-  - 
-    name: Create user
-    netapp.ontap.na_ontap_user:
-    state: present
-    name: test123
-    application_dicts:
+    - name: Create user
+      netapp.ontap.na_ontap_user:
+      state: present
+      name: test123
+      application_dicts:
       - application: http
         authentication_methods: password
       - application: ssh
         authentication_methods: password,publickey
-    role_name: admin
-    set_password: bobdole1234566
-    vserver: "{{ vserver }}"
-    hostname: "{{ PRI_CLU }}"
-    username: "{{ PRI_CLU_USER }}"
-    password: "{{ PRI_CLU_PASS }}"
+      role_name: admin
+      set_password: bobdole1234566
+      vserver: "{{ vserver }}"
+      hostname: "{{ PRI_CLU }}"
+      username: "{{ PRI_CLU_USER }}"
+      password: "{{ PRI_CLU_PASS }}"
     
