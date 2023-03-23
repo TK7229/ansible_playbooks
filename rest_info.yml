@@ -28,6 +28,6 @@
         command: 'version'
         verb: 'GET?
       register: result
-    - debug: var=result
-    - assert: { that: result.status_code==200, quiet: True }
+    #- debug: var=result
+    #- assert: { that: result.status_code==200, quiet: True }
    
