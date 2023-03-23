@@ -1,6 +1,5 @@
 ---
-- 
-  name: ONTAP REST API
+- name: ONTAP REST API
   hosts: localhost
   gather_facts: false
   collections:
@@ -10,7 +9,6 @@
     PRI_CLU_USER: admin
     PRI_CLU_PASS: Netapp1!
     vserver: cluster-ontap
-  
   tasks:
     - name: Create user
       netapp.ontap.na_ontap_user:
@@ -27,4 +25,3 @@
       hostname: "{{ PRI_CLU }}"
       username: "{{ PRI_CLU_USER }}"
       password: "{{ PRI_CLU_PASS }}"
-    
