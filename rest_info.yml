@@ -26,6 +26,6 @@
       na_ontap_rest_cli:
         <<: *login
         command: 'volume rename -volume cifs_data_new -newname cifs_data'
-        verb: 'POST'
+        verb: 'PATCH'
       #register: out
     #- debug: var=out.stdout_lines
