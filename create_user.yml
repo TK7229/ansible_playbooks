@@ -22,7 +22,7 @@
         - application: http
         authentication_methods: password
         - application: ssh
-        authentication_methods: password,publickey
+        authentication_methods: publickey
         role_name: vsadmin
         set_password: bobdole1234566
         vserver:  "{{ VSERVER }}"
