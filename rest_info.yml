@@ -12,7 +12,7 @@
       #hostname: "{{ admin_ip }}"
       #username: "{{ admin_username }}"
       #password: "{{ admin_password }}"
-      https: true
+      https: false
       validate_certs: false
     svm_login: &svm_login
       hostname: "{{ svm_admin_ip }}"
