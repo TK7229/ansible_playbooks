@@ -1,7 +1,6 @@
-- name: ONTAP REST API
-  become: true
-  hosts: localhost
-  gather_facts: false
+---
+# ONTAP REST API - CREATE USER
+- hosts: localhost
   collections:
     - netapp.ontap
   vars:
@@ -12,7 +11,7 @@
 
   tasks:
     - name: Create user
-    netapp.ontap.na_ontap_user:
+      netapp.ontap.na_ontap_user:
       state: present
       name: test123
       application_dicts:
