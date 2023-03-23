@@ -12,7 +12,7 @@
       #hostname: "{{ admin_ip }}"
       #username: "{{ admin_username }}"
       #password: "{{ admin_password }}"
-      https: false
+      https: true
       validate_certs: false
     svm_login: &svm_login
       hostname: "{{ svm_admin_ip }}"
@@ -22,10 +22,12 @@
       validate_certs: false
 
   tasks:
-    - name: run ontap REST cli command
-      na_ontap_rest_cli:
+   - name: run ontap REST API command as cluster admin
+      na_ontap_restit:
         <<: *login
-        command: 'volume rename -volume cifs_data_new -newname cifs_data'
-        verb: 'PATCH'
-      #register: out
-    #- debug: var=out.stdout_lines
+        api: cluster/software
+        query:
+          fields: version
+      register: result
+    - debug: var=result
+    - assert: { that: result.status_code==200, quiet: True }
