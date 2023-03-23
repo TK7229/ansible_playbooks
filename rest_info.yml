@@ -22,10 +22,12 @@
       validate_certs: false
 
   tasks:
-    - name: run ontap REST API command as cluster admin
-      na_ontap_restit:
+    - name: run ontap REST cli command
+      na_ontap_rest_cli:
         <<: *login
-        api: cluster/software
+        command: 'version'
+        verb: 'GET?
       register: result
     - debug: var=result
     - assert: { that: result.status_code==200, quiet: True }
+   
