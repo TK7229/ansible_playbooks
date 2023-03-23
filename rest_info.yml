@@ -28,37 +28,43 @@
 
   - name: run ONTAP gather facts for vserver info
     na_ontap_rest_info:
+      gather_subset:
+        - vserver_info
       hostname:       "{{ PRI_CLU }}"
       username:       "{{ PRI_CLU_USER }}"
       password:       "{{ PRI_CLU_PASS }}"
       https:          true
       validate_certs: false
       use_rest: Always
-      gather_subset:
-      - vserver_info
+      
   - name: run ONTAP gather facts for aggregate info and volume info
     na_ontap_rest_info:
+      gather_subset:
+        - aggregate_info
+        - volume_info
       hostname:       "{{ PRI_CLU }}"
       username:       "{{ PRI_CLU_USER }}"
       password:       "{{ PRI_CLU_PASS }}"
       https:          true
       validate_certs: false
       use_rest: Always
-      gather_subset:
-      - aggregate_info
-      - volume_info
+      
   - name: run ONTAP gather facts for all subsets
     na_ontap_rest_info:
+      gather_subset:
+        - all
       hostname:       "{{ PRI_CLU }}"
       username:       "{{ PRI_CLU_USER }}"
       password:       "{{ PRI_CLU_PASS }}"
       https:          true
       validate_certs: false
       use_rest: Always
-      gather_subset:
-      - all
+      
   - name: run ONTAP gather facts for aggregate info and volume info with fields section
     na_ontap_rest_info:
+      gather_subset:
+        - aggregate_info
+        - volume_info
       hostname:       "{{ PRI_CLU }}"
       username:       "{{ PRI_CLU_USER }}"
       password:       "{{ PRI_CLU_PASS }}"
@@ -67,11 +73,11 @@
       - '*'
       validate_certs: false
       use_rest: Always
-      gather_subset:
-      - aggregate_info
-      - volume_info
+      
   - name: run ONTAP gather facts for aggregate info with specified fields
     na_ontap_rest_info:
+      gather_subset:
+        - aggregate_info
       hostname:       "{{ PRI_CLU }}"
       username:       "{{ PRI_CLU_USER }}"
       password:       "{{ PRI_CLU_PASS }}"
@@ -82,5 +88,4 @@
       - 'node'
       validate_certs: false
       use_rest: Always
-      gather_subset:
-      - aggregate_info
+      
