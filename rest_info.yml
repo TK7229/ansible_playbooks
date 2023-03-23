@@ -1,23 +1,33 @@
 ---
-- hosts: localhost
+- 
+  name: ONTAP REST API
+  hosts: localhost
   gather_facts: false
-  #vars:
-   # input: &input
-    #  hostname:       "{{ PRI_CLU }}"
-     # username:       "{{ PRI_CLU_USER }}"
-     # password:       "{{ PRI_CLU_PASS }}"
-     # https:          true
-     # validate_certs: false
-  vars_files:
-    - global.yml
-    #- global_home.yml
   collections:
-  - netapp.ontap
+    - netapp.ontap
+  vars:
+    PRI_CLU: 192.168.77.140
+    PRI_CLU_USER: admin
+    PRI_CLU_PASS: Netapp1!
+    svm_name: cifs
+  
+    login: &login
+      hostname: "{{ PRI_CLU }}"
+      username: "{{ PRI_CLU_USER }}"
+      password: "{{ PRI_CLU_PASS }}"
+      https:  true
+      validate_certs: false
+  
+  #vars_files:
+   # - global.yml
+    #- global_home.yml
   
   
   tasks:
   - name: REST info module
     na_ontap_rest_info:
+      <<: *login
+      api: cluster/software
       gather_subset:
         - cluster_node_info
       hostname:       "{{ PRI_CLU }}"
