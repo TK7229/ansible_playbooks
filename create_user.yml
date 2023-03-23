@@ -17,7 +17,7 @@
         name: test123
         application_dicts:
           - application: http
-          authentication_methods: password
+            authentication_methods: password
           #- application: ssh
           #authentication_methods: publickey
         role_name: vsadmin
