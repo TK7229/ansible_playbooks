@@ -25,7 +25,7 @@
     - name: run ontap REST cli command
       na_ontap_rest_cli:
         <<: *login
-        command: version
-        verb: GET
-      register: out
-    - debug: var=out.stdout_lines
+        command: 'version'
+        verb: 'GET'
+      #register: out
+    #- debug: var=out.stdout_lines
