@@ -40,15 +40,15 @@
         query:
           fields: 'security login show'
      register: result
-   - debug: var=result
-   - assert: { that: result.status_code==200, quiet: True }
+  
    
    
    - name: 'https://<mgmt-ip>/api/security/accounts'
      na_ontap_restit:
        <<: *login
-       method: POST
+       api: security/accounts
        body: '{"name":"cluster_user1","applications":[{"application":"ssh","authentication_methods":["password"],"second_authentication_method":"none"},{"application":"http","authentication_methods":["password"]}],"role":"admin","password":"p@ssw@rd123"}'
-       headers:
-       Content-Type: application/x-www-form-urlencoded
+       method: POST
        register: result
+     - debug: var=result
+     - assert: { that: result.status_code==200, quiet: True }
