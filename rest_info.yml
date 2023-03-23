@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  collections:
+  - netapp.ontap
+  tasks:
+  - name: REST info module
+    na_ontap_rest_info:
+      gather_subset:
+        - cluster_node_info
+      hostname: "192.168.20.140"
+      username: "admin"
+      password: "Netapp1!"
+      https: true
+      validate_certs: false
