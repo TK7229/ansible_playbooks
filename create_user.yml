@@ -14,17 +14,17 @@
 
   tasks:
 - name: Create user
-    netapp.ontap.na_ontap_user:
-      state: present
-      name: test123
-      application_dicts:
-      - application: http
-      authentication_methods: password
-      #- application: ssh
-      #authentication_methods: publickey
-      role_name: vsadmin
-      set_password: bobdole1234566
-      vserver:  "{{ VSERVER }}"
-      hostname: "{{ PRI_CLU }}"
-      username: "{{ PRI_CLU_USER }}"
-      password: "{{ PRI_CLU_PASS }}"
+  netapp.ontap.na_ontap_user:
+  state: present
+  name: test123
+  application_dicts:
+  - application: http
+  authentication_methods: password
+  #- application: ssh
+  #authentication_methods: publickey
+  role_name: vsadmin
+  set_password: bobdole1234566
+  vserver:  "{{ VSERVER }}"
+  hostname: "{{ PRI_CLU }}"
+  username: "{{ PRI_CLU_USER }}"
+  password: "{{ PRI_CLU_PASS }}"
