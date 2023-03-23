@@ -23,11 +23,11 @@
 
   tasks:
    - name: run ontap REST API command as cluster admin
-      na_ontap_restit:
+     na_ontap_restit:
         <<: *login
         api: cluster/software
         query:
           fields: version
-      register: result
+     register: result
     - debug: var=result
     - assert: { that: result.status_code==200, quiet: True }
