@@ -1,6 +1,6 @@
 ---
 
-- name: ONTAP REST API
+  - name: ONTAP REST API
   become: true
   hosts: localhost
   gather_facts: false
