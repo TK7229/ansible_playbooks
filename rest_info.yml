@@ -45,13 +45,10 @@
    
    
    - name: 'https://<mgmt-ip>/api/security/accounts'
-     url: 'https://192.168.77.140/api/security/accounts'
-     <<: *login
-     method: POST
-     body: '{"name":"cluster_user1","applications":[{"application":"ssh","authentication_methods":["password"],"second_authentication_method":"none"},{"application":"http","authentication_methods":["password"]}],"role":"admin","password":"p@ssw@rd123"}'
-     headers:
-     Content-Type: application/x-www-form-urlencoded
-     url_username: admin
-     url_password: Netapp1!
-     validate_certs: false
-     register: result
+     na_ontap_restit:
+       <<: *login
+       method: POST
+       body: '{"name":"cluster_user1","applications":[{"application":"ssh","authentication_methods":["password"],"second_authentication_method":"none"},{"application":"http","authentication_methods":["password"]}],"role":"admin","password":"p@ssw@rd123"}'
+       headers:
+       Content-Type: application/x-www-form-urlencoded
+       register: result
