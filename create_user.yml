@@ -1,6 +1,7 @@
 ---
-# ONTAP REST API - CREATE USER
-- hosts: localhost
+- name: ONTAP REST API - CREATE USER
+  hosts: localhost
+  gather_facts: False
   collections:
     - netapp.ontap
   vars:
