@@ -1,102 +1,28 @@
----
-- 
-  name: ONTAP REST API
+-
+  name: Ontap REST API
   hosts: localhost
-  gather_facts: false
+  gather_facts: False
   collections:
     - netapp.ontap
   vars:
-    PRI_CLU: 192.168.77.140
-    PRI_CLU_USER: admin
-    PRI_CLU_PASS: Netapp1!
-    svm_name: cifs
-  
     login: &login
-      hostname: "{{ PRI_CLU }}"
-      username: "{{ PRI_CLU_USER }}"
-      password: "{{ PRI_CLU_PASS }}"
-      https:  true
+      hostname: "{{ admin_ip }}"
+      username: "{{ admin_username }}"
+      password: "{{ admin_password }}"
+      https: true
       validate_certs: false
-  
-  #vars_files:
-   # - global.yml
-    #- global_home.yml
-  
-  
+    svm_login: &svm_login
+      hostname: "{{ svm_admin_ip }}"
+      username: "{{ svm_admin_username }}"
+      password: "{{ svm_admin_password }}"
+      https: true
+      validate_certs: false
+
   tasks:
-  - name: REST info module
-    na_ontap_rest_info:
-      <<: *login
-      api: cluster/software
-      gather_subset:
-        - cluster_node_info
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      validate_certs: false
-
-
-  - name: run ONTAP gather facts for vserver info
-    na_ontap_rest_info:
-      gather_subset:
-        - vserver_info
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      validate_certs: false
-      use_rest: Always
-      
-  - name: run ONTAP gather facts for aggregate info and volume info
-    na_ontap_rest_info:
-      gather_subset:
-        - aggregate_info
-        - volume_info
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      validate_certs: false
-      use_rest: Always
-      
-  - name: run ONTAP gather facts for all subsets
-    na_ontap_rest_info:
-      gather_subset:
-        - all
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      validate_certs: false
-      use_rest: Always
-      
-  - name: run ONTAP gather facts for aggregate info and volume info with fields section
-    na_ontap_rest_info:
-      gather_subset:
-        - aggregate_info
-        - volume_info
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      fields:
-      - '*'
-      validate_certs: false
-      use_rest: Always
-      
-  - name: run ONTAP gather facts for aggregate info with specified fields
-    na_ontap_rest_info:
-      gather_subset:
-        - aggregate_info
-      hostname:       "{{ PRI_CLU }}"
-      username:       "{{ PRI_CLU_USER }}"
-      password:       "{{ PRI_CLU_PASS }}"
-      https:          true
-      fields:
-      - 'uuid'
-      - 'name'
-      - 'node'
-      validate_certs: false
-      use_rest: Always
-      
+    - name: run ontap REST API command as cluster admin
+      na_ontap_restit:
+        <<: *login
+        api: cluster/software
+      register: result
+    - debug: var=result
+    - assert: { that: result.status_code==200, quiet: True }
