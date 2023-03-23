@@ -1,5 +1,6 @@
 ---
 - name: ONTAP REST API
+  become: false
   hosts: localhost
   gather_facts: false
   collections:
@@ -10,8 +11,7 @@
     PRI_CLU_PASS: Netapp1!
     vserver: cluster-ontap
   tasks:
-    - 
-      #name: 'Create'
+    - name: 'Create'
       netapp.ontap.na_ontap_user:
       state: present
       name: test123
