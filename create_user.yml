@@ -1,28 +1,30 @@
 ---
+
 - name: ONTAP REST API
-  become: false
+  become: true
   hosts: localhost
   gather_facts: false
   collections:
-    - netapp.ontap
+  - netapp.ontap
   vars:
     PRI_CLU: 192.168.77.140
     PRI_CLU_USER: admin
     PRI_CLU_PASS: Netapp1!
-    vserver: cluster-ontap
+    VSERVER: cluster-ontap
+
   tasks:
-    - name: CREATE USER
-      netapp.ontap.na_ontap_user:
-      state: present
-      name: test123
-      application_dicts:
-        - application: http
-          authentication_methods: password
-        - application: ssh
-          authentication_methods: password,publickey
-      role_name: admin
-      set_password: bobdole1234566
-      vserver: "{{ vserver }}"
-      hostname: "{{ PRI_CLU }}"
-      username: "{{ PRI_CLU_USER }}"
-      password: "{{ PRI_CLU_PASS }}"
+
+  - name: create user
+    netapp.ontap.na_ontap_user:
+     state: present
+     name: SampleUser
+     applications: ssh,console
+     authentication_method: password
+     set_password: apn1242183u1298u41
+     lock_user: True
+     role_name: admin
+     set_password: bobdole1234566
+     vserver:  "{{ VSERVER }}"
+     hostname: "{{ PRI_CLU }}"
+     username: "{{ PRI_CLU_USER }}"
+     password: "{{ PRI_CLU_PASS }}"
