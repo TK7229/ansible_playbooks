@@ -10,6 +10,7 @@
       validate_certs: false
   vars_files:
     - global.yml
+    #- global_home.yml
   collections:
   - netapp.ontap
   
