@@ -19,10 +19,10 @@
         state: present
         name: test123
         application_dicts:
-          - application: http
-            authentication_methods: password
-          - application: ssh
-            authentication_methods: password,publickey
+        - application: http
+        authentication_methods: password
+        - application: ssh
+        authentication_methods: password,publickey
         role_name: vsadmin
         set_password: bobdole1234566
         vserver:  "{{ VSERVER }}"
