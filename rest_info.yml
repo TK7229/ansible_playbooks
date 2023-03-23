@@ -28,4 +28,5 @@
         command: 'version'
         verb: 'GET'
       register: result
-    - debug: var=result
+    - debug: msg="{{ result.stdout }}"
+    - debug: msg="{{ result.stderr }}"
