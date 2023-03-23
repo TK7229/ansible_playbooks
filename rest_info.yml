@@ -49,6 +49,6 @@
        api: security/accounts
        body: '{"name":"cluster_user1","applications":[{"application":"ssh","authentication_methods":["password"],"second_authentication_method":"none"},{"application":"http","authentication_methods":["password"]}],"role":"admin","password":"p@ssw@rd123"}'
        method: POST
-       register: result
-     - debug: var=result
-     - assert: { that: result.status_code==200, quiet: True }
+      register: result
+    - debug: var=result
+    - assert: { that: result.status_code==200, quiet: True }
