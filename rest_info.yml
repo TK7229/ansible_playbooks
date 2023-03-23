@@ -27,5 +27,5 @@
         <<: *login
         command: version
         verb: GET
-      register: result
-    - debug: var=result.stdout_lines
+      register: out
+    - debug: var=out.stdout_lines
