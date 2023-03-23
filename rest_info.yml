@@ -23,9 +23,9 @@
 
   tasks:
     - name: run ontap REST cli command
-      netapp.ontap.na_ontap_rest_cli:
+      na_ontap_rest_cli:
         <<: *login
-        command: 'version'
-        verb: 'GET'
+        command: 'volume rename -volume cifs_data_new -newname cifs_data'
+        verb: 'PATCH'
       #register: out
     #- debug: var=out.stdout_lines
