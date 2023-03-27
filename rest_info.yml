@@ -33,6 +33,10 @@
    - debug: var=result
    - assert: { that: result.status_code==200, quiet: True }
   
-   
-   
+ 
+   - name: run ontap rest cli command
+     na_ontap_rest_cli:
+        <<: *login
+        command: 'version'
+        verb: 'GET'
 
