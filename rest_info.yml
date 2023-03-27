@@ -37,7 +37,7 @@
      na_ontap_restit:
         <<: *login
         api: cluster/jobs
-        query:
+        method: GET
           fields: description
      register: result
    - debug: var=result
