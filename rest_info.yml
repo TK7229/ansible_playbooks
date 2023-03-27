@@ -39,7 +39,6 @@
         api: cluster/jobs
         method: GET
           fields: description
-     register: result
    - debug: var=result
    - assert: { that: result.status_code==200, quiet: True }
 
