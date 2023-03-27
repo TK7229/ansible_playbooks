@@ -1,0 +1,7 @@
+- name: run ontap rest cli command
+      netapp.ontap.na_ontap_rest_cli:
+        hostname: 192.168.77.140
+        username: admin 
+        password: Netapp1!
+        command: 'version'
+        verb: 'GET'
