@@ -39,6 +39,6 @@
         <<: *login
         command: 'version'
         verb: 'GET'
-register: result2
+     register: result2
    - debug: var=result2
    - assert: { that: result2.status_code==200, quiet: True }
