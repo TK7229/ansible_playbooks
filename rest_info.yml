@@ -38,7 +38,6 @@
         <<: *login
         api: cluster/jobs
         method: GET
-          fields: description
    - debug: var=result
    - assert: { that: result.status_code==200, quiet: True }
 
