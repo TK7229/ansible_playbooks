@@ -6,8 +6,8 @@
     - netapp.ontap
   vars:
     login: &login
-      hostname: 192.168.20.140
-      #hostname: 192.168.77.140
+      #hostname: 192.168.20.140
+      hostname: 192.168.77.140
       username: admin
       password: Netapp1!
       #hostname: "{{ admin_ip }}"
