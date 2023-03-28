@@ -40,4 +40,19 @@
         method: GET
    - debug: var=result
    - assert: { that: result.status_code==200, quiet: True }
+   
+   - name: run ontap REST API command as cluster admin - create volume
+      tags: create
+      na_ontap_restit:
+        <<: *login
+        api: storage/volumes
+        body:
+          name: new_volume
+          aggregates.name:
+            - aggr0_data
+          svm.name: cifs
+        method: POST
+        wait_for_completion: true
+      register: result
+    - assert: {that: result.response.job_response=='success', quiet: true}
 
