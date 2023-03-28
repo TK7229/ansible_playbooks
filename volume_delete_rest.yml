@@ -27,7 +27,7 @@
      tags: create
      na_ontap_restit:
         <<: *login
-        api: storage/volumes/{uuid}
+        api: storage/volumes
         method: GET
         wait_for_completion: true
    - assert: {that: result.response.job_response=='success', quiet: true}
