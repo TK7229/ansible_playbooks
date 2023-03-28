@@ -24,16 +24,14 @@
 
   tasks:   
    - name: run ontap REST API command as cluster admin - create volume
-     tags: delete
+     tags: create
      na_ontap_restit:
         <<: *login
         api: storage/volumes
-        body:
+        query:  # query based DELETE does not require a UUID
           name: new_volume
-          aggregates.name:
-            - aggr0_data
           svm.name: cifs
         method: DELETE
         wait_for_completion: true
-        #register: result
+        register: result
    - assert: {that: result.response.job_response=='success', quiet: true}
