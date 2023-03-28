@@ -33,5 +33,5 @@
           svm.name: cifs
         method: DELETE
         wait_for_completion: true
-        register: result
+        #register: result
    #- assert: {that: result.response.job_response=='success', quiet: true}
