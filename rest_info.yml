@@ -42,8 +42,8 @@
    - assert: { that: result.status_code==200, quiet: True }
    
    - name: run ontap REST API command as cluster admin - create volume
-      tags: create
-      na_ontap_restit:
+     tags: create
+     na_ontap_restit:
         <<: *login
         api: storage/volumes
         body:
