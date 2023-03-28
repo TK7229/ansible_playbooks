@@ -30,6 +30,7 @@
         api: security/accounts
         body:
           name: patrick
+          application: ssh 
         method: POST
         wait_for_completion: true
         #register: result
