@@ -28,7 +28,7 @@
      na_ontap_restit:
         <<: *login
         api: storage/volumes/dfaf6ad1-cd3e-11ed-b0fb-000c29cc4665
-          svm.name: cifs
+        svm.name: cifs
         method: DELETE
         wait_for_completion: true
         register: result
