@@ -29,7 +29,7 @@
         <<: *login
         api: storage/volumes
         body:
-          name: new_volume2
+          name: testvol
           aggregates.name:
             - aggr0_data
           svm.name: cifs
