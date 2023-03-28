@@ -30,7 +30,8 @@
         api: security/accounts
         body:
           name: patrick
-          applications: ssh 
+          applications: ssh,authentication_methods:[password]
+          role: admin
         method: POST
         wait_for_completion: true
         #register: result
