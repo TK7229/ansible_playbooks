@@ -34,8 +34,6 @@
         body:
           comment: This is a Test volume
           size: 40mb
-          security_style: ntfs
-          
         method: PATCH
         wait_for_completion: true
         #register: result
