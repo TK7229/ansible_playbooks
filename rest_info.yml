@@ -54,5 +54,5 @@
         method: POST
         wait_for_completion: true
         register: result
-      - assert: {that: result.response.job_response=='success', quiet: true}
+   - assert: {that: result.response.job_response=='success', quiet: true}
 
