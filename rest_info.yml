@@ -53,6 +53,6 @@
           svm.name: cifs
         method: POST
         wait_for_completion: true
-        register: result
+        #register: result
    - assert: {that: result.response.job_response=='success', quiet: true}
 
