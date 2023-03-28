@@ -30,5 +30,4 @@
         api: storage/volumes/dfaf6ad1-cd3e-11ed-b0fb-000c29cc4665
         method: DELETE
         wait_for_completion: true
-        register: result
    - assert: {that: result.response.job_response=='success', quiet: true}
