@@ -22,17 +22,7 @@
       https: true
       validate_certs: false
 
-  tasks:   
-   - name: run ontap REST API command as cluster admin - create volume
-     tags: create
-     na_ontap_restit:
-        <<: *login
-        api: storage/volumes
-        method: GET
-        wait_for_completion: true
-   - assert: {that: result.response.job_response=='success', quiet: true}
-   
-   
+  tasks:  
     - name: run ontap REST API command as cluster admin - create volume
      tags: create
      na_ontap_restit:
