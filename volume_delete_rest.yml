@@ -23,14 +23,15 @@
       validate_certs: false
 
   tasks:  
-    - name: run ontap REST API command as cluster admin - create volume
+    - name: run ontap REST API command as cluster admin - delete volume
       tags: create
       na_ontap_restit:
         <<: *login
         api: storage/volumes
-        body:
-          uuid: dfab43d4-cd3e-11ed-b0fb-000c29cc4665
+        query:
+          name: testvol3
+          svm.name: cifs
         method: DELETE
         wait_for_completion: true
-        #register: result
+        register: result
    #- assert: {that: result.response.job_response=='success', quiet: true}
