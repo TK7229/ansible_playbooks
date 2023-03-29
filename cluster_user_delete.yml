@@ -1,0 +1,44 @@
+-
+  name: Ontap REST API
+  hosts: localhost
+  gather_facts: False
+  collections:
+    - netapp.ontap
+  vars:
+    login: &login
+      #hostname: 192.168.20.140
+      hostname: 192.168.77.140
+      username: admin
+      password: Netapp1!
+      #vserver: cluster-ontap
+      vserver: cluster-ontap
+      #hostname: "{{ admin_ip }}"
+      #username: "{{ admin_username }}"
+      #password: "{{ admin_password }}"
+      https: true
+      validate_certs: false
+    svm_login: &svm_login
+      hostname: "{{ svm_admin_ip }}"
+      username: "{{ svm_admin_username }}"
+      password: "{{ svm_admin_password }}"
+      https: true
+      validate_certs: false
+
+  tasks:   
+   - name: Deleting local user on cluster
+     na_ontap_user:
+      state: absent
+      use_rest: always
+      <<: *login
+      name: patrick
+      application_dicts:
+        - application: http
+          authentication_methods: password
+        - application: ssh
+          authentication_methods: password
+        - application: console
+          authentication_methods: password
+        - application: ontapi
+          authentication_methods: password
+        - application: service-processor
+          authentication_methods: password
