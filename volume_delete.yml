@@ -22,16 +22,13 @@
       https: true
       validate_certs: false
 
-  tasks:  
-    - name: run ontap REST API command as cluster admin - delete volume
-      tags: create
-      na_ontap_restit:
+  tasks:   
+   - name: Delete FlexVol
+     na_ontap_volume:
+        state: absent
+        use_rest: always
         <<: *login
-        api: storage/volumes
-        query:
-          name: testvol3
-          svm.name: cifs
-        method: DELETE
-        wait_for_completion: true
-        #register: result
-   #- assert: {that: result.response.job_response=='success', quiet: true}
+        name: test*
+        aggregate_name: aggr0_data
+        vserver: cifs
+        wait_for_completion: True
