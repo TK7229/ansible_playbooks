@@ -8,9 +8,9 @@
     login: &login
       #hostname: 192.168.20.140
       hostname: 192.168.77.140
-      username: "{{ ansible_env.ANSIBLE_NET_USERNAME }}"
+      username: {{ ansible_env.ANSIBLE_NET_USERNAME }}
       state: present
-      password: "{{ ansible_env.ANSIBLE_NET_PASSWORD }}"
+      password: {{ ansible_env.ANSIBLE_NET_PASSWORD }}
       #hostname: "{{ admin_ip }}"
       #username: "{{ admin_username }}"
       #password: "{{ admin_password }}"
@@ -92,5 +92,3 @@
         #space_slo: none
         #nvfail_enabled: False
         comment: ansible created volume
-        
-   - debug: var=ansible_env
