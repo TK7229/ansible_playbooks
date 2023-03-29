@@ -23,17 +23,24 @@
       validate_certs: false
 
   tasks:   
-   - name: run ontap REST API command as cluster admin - create volume
-     tags: create
-     na_ontap_restit:
+   - name: Create FlexVol
+     na_ontap_volume:
+        state: present
+        use_rest: always
         <<: *login
-        api: storage/volumes
-        body:
-          name: testvol
-          aggregates.name:
-            - aggr0_data
-          svm.name: cifs
-        method: POST
-        wait_for_completion: true
-        #register: result
-   - assert: {that: result.response.job_response=='success', quiet: true}
+        name: testflexvol
+        is_infinite: False
+        aggregate_name: aggr0_data
+        size: 30
+        size_unit: mb
+        user_id: 1001
+        group_id: 2002
+        space_quarantee: none
+        tiering_policy: auto
+        export_policy: default
+        percent_snapshot_space: 60
+        qos_policy_group: max_performance_gold
+        wait_for_completion: True
+        space_slo: none
+        nvfail_enabled: False
+        comment: ansible created volume
