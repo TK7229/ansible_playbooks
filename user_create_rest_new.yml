@@ -27,6 +27,8 @@
   tasks:   
    - name: Creating local user on cluster
      na_ontap_user:
+      state: present
+      use_rest: always
       <<: *login
       name: patrick
       application_dicts:
