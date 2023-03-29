@@ -44,6 +44,7 @@
         #space_slo: none
         #nvfail_enabled: False
         comment: ansible created volume
+        type: DP
         
    - name: Create FlexVol
      na_ontap_volume:
@@ -66,6 +67,7 @@
         #space_slo: none
         #nvfail_enabled: False
         comment: ansible created volume
+        type: DP
         
    - name: Create FlexVol
      na_ontap_volume:
@@ -88,3 +90,4 @@
         #space_slo: none
         #nvfail_enabled: False
         comment: ansible created volume
+        type: DP
