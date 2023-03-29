@@ -2,6 +2,7 @@
   name: Ontap REST API
   hosts: localhost
   gather_facts: False
+- debug: var=ansible_env
   collections:
     - netapp.ontap
   vars:
