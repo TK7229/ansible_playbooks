@@ -10,6 +10,7 @@
       hostname: 192.168.77.140
       username: admin
       password: Netapp1!
+      #vserver: cluster-ontap
       vserver: cluster-ontap
       #hostname: "{{ admin_ip }}"
       #username: "{{ admin_username }}"
@@ -27,12 +28,11 @@
    - name: Creating local user on cluster
      netapp.ontap.na_ontap_user:
       <<: *login
-      #vserver: cluster-ontap
       name: patrick
-      applications: http
-      authentication_method: password
-      set_password: test1234
+      application_dicts:
+        - application: http
+          authentication_methods: password
+        - application: ssh
+          authentication_methods: password,publickey
       role_name: admin
-      #wait_for_completion: true
-      #register: result
-   #- assert: {that: result.response.job_response=='success', quiet: true}
+      set_password: test1234
