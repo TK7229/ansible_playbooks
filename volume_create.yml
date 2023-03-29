@@ -45,7 +45,7 @@
         #nvfail_enabled: False
         comment: ansible created volume
         
-     - name: Create FlexVol
+   - name: Create FlexVol
      na_ontap_volume:
         state: present
         use_rest: always
@@ -67,7 +67,7 @@
         #nvfail_enabled: False
         comment: ansible created volume
         
-     - name: Create FlexVol
+   - name: Create FlexVol
      na_ontap_volume:
         state: present
         use_rest: always
