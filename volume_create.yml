@@ -26,7 +26,6 @@
   tasks:   
    - name: Create FlexVol
      na_ontap_volume:
-        state: present
         use_rest: always
         <<: *login
         name: testflexvol1
@@ -49,7 +48,6 @@
         
    - name: Create FlexVol
      na_ontap_volume:
-        state: present
         use_rest: always
         <<: *login
         name: testflexvol2
@@ -72,7 +70,6 @@
         
    - name: Create FlexVol
      na_ontap_volume:
-        state: present
         use_rest: always
         <<: *login
         name: testflexvol3
