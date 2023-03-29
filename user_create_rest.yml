@@ -30,7 +30,7 @@
         api: security/accounts
         body:
           name: patrick
-        application_dicts:
+        applications:
           - application: ssh
             authentication_mathods: password
             second_authentication_method: none
