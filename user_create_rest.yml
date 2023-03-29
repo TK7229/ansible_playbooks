@@ -30,14 +30,14 @@
         api: security/accounts
         body:
           name: patrick
-        applications:
-          application: ssh
-          authentication_mathods: password
-          second_authentication_method: none
-          application: http
-          authentication_mathods: password
-          role: admin
-          password: test1234
+        application_dicts:
+          - application: ssh
+            authentication_mathods: password
+            second_authentication_method: none
+          - application: http
+            authentication_mathods: password
+        role_name: admin
+        set_password: test1234
         method: POST
         wait_for_completion: true
         #register: result
