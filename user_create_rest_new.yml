@@ -30,7 +30,7 @@
       <<: *login
       name: patrick
       application_dicts:
-        - application: https
+        - application: http
           authentication_methods: password
         - application: ssh
           authentication_methods: password,publickey
