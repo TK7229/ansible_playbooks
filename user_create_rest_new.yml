@@ -24,7 +24,7 @@
 
   tasks:   
    - name: Creating local user on cluster
-      netapp.ontap.na_ontap_user:
+     netapp.ontap.na_ontap_user:
       <<: *login
       name: patrick
       applications: http
