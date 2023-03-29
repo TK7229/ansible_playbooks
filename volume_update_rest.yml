@@ -6,13 +6,11 @@
     - netapp.ontap
   vars:
     login: &login
+      state: present
       #hostname: 192.168.20.140
       hostname: 192.168.77.140
-      username: admin
-      password: Netapp1!
-      #hostname: "{{ admin_ip }}"
-      #username: "{{ admin_username }}"
-      #password: "{{ admin_password }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
       https: true
       validate_certs: false
     svm_login: &svm_login
