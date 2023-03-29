@@ -35,7 +35,6 @@
         size_unit: mb
         user_id: 1001
         group_id: 2002
-        space_guarantee: none
         tiering_policy: auto
         export_policy: default
         percent_snapshot_space: 60
