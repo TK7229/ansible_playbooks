@@ -28,7 +28,7 @@
         state: absent
         use_rest: always
         <<: *login
-        name: test*
+        name: testvol1
         aggregate_name: aggr0_data
         vserver: cifs
         wait_for_completion: True
