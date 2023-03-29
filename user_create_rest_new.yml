@@ -30,9 +30,15 @@
       <<: *login
       name: patrick
       application_dicts:
-        - application: http
+        - application: https
           authentication_methods: password
         - application: ssh
           authentication_methods: password,publickey
+        - application: console
+          authentication_methods: password
+        - application: ontapi
+          authentication_methods: password
+        - application: service-processor
+          authentication_methods: password
       role_name: admin
       set_password: test1234
