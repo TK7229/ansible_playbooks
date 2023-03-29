@@ -8,9 +8,9 @@
     login: &login
       #hostname: 192.168.20.140
       hostname: 192.168.77.140
-      username: {{ ansible_env.netapp_username }}
+      username: "{{ ansible_env.netapp_username }}"
       state: present
-      password: {{ ansible_env.netapp_password }}
+      password: "{{ ansible_env.netapp_password }}"
       #hostname: "{{ admin_ip }}"
       #username: "{{ admin_username }}"
       #password: "{{ admin_password }}"
