@@ -32,6 +32,6 @@
       authentication_method: password
       set_password: test1234
       role_name: admin
-      wait_for_completion: true
+      #wait_for_completion: true
       #register: result
    - assert: {that: result.response.job_response=='success', quiet: true}
