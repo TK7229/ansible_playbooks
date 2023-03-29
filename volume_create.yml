@@ -38,7 +38,7 @@
         tiering_policy: auto
         export_policy: default
         percent_snapshot_space: 60
-        qos_policy_group: max_performance_gold
+        #qos_policy_group: max_performance_gold
         vserver: cifs
         wait_for_completion: True
         #space_slo: none
