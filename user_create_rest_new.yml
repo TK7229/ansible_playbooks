@@ -26,6 +26,7 @@
    - name: Creating local user on cluster
      netapp.ontap.na_ontap_user:
       <<: *login
+      vserver: cluster-ontap
       name: patrick
       applications: http
       authentication_method: password
