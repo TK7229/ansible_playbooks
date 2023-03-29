@@ -23,14 +23,14 @@
       validate_certs: false
 
   tasks:   
-      - name: Creating local user on cluster
-        netapp.ontap.na_ontap_user:
-        <<: *login
-        name: patrick
-        applications: http
-        authentication_method: password
-        set_password: test1234
-        role_name: admin
-        wait_for_completion: true
-        #register: result
+   - name: Creating local user on cluster
+      netapp.ontap.na_ontap_user:
+      <<: *login
+      name: patrick
+      applications: http
+      authentication_method: password
+      set_password: test1234
+      role_name: admin
+      wait_for_completion: true
+      #register: result
    - assert: {that: result.response.job_response=='success', quiet: true}
