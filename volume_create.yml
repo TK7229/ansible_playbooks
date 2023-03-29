@@ -1,4 +1,3 @@
-- debug: var=ansible_env
 -
   name: Ontap REST API
   hosts: localhost
@@ -93,3 +92,5 @@
         #space_slo: none
         #nvfail_enabled: False
         comment: ansible created volume
+        
+   - debug: var=ansible_env
