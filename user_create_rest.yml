@@ -36,8 +36,8 @@
             second_authentication_method: none
           - application: http
             authentication_mathods: password
-        role_name: admin
-        set_password: test1234
+        role: admin
+        password: test1234
         method: POST
         wait_for_completion: true
         #register: result
