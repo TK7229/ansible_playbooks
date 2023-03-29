@@ -28,7 +28,51 @@
         state: present
         use_rest: always
         <<: *login
-        name: testflexvol
+        name: testflexvol1
+        is_infinite: False
+        aggregate_name: aggr0_data
+        size: 30
+        size_unit: mb
+        user_id: 1001
+        group_id: 2002
+        tiering_policy: auto
+        export_policy: default
+        percent_snapshot_space: 60
+        #qos_policy_group: max_performance_gold
+        vserver: cifs
+        wait_for_completion: True
+        #space_slo: none
+        #nvfail_enabled: False
+        comment: ansible created volume
+        
+     - name: Create FlexVol
+     na_ontap_volume:
+        state: present
+        use_rest: always
+        <<: *login
+        name: testflexvol2
+        is_infinite: False
+        aggregate_name: aggr0_data
+        size: 30
+        size_unit: mb
+        user_id: 1001
+        group_id: 2002
+        tiering_policy: auto
+        export_policy: default
+        percent_snapshot_space: 60
+        #qos_policy_group: max_performance_gold
+        vserver: cifs
+        wait_for_completion: True
+        #space_slo: none
+        #nvfail_enabled: False
+        comment: ansible created volume
+        
+     - name: Create FlexVol
+     na_ontap_volume:
+        state: present
+        use_rest: always
+        <<: *login
+        name: testflexvol3
         is_infinite: False
         aggregate_name: aggr0_data
         size: 30
