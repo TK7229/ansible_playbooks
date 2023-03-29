@@ -33,7 +33,7 @@
         - application: http
           authentication_methods: password
         - application: ssh
-          authentication_methods: password,publickey
+          authentication_methods: password
         - application: console
           authentication_methods: password
         - application: ontapi
