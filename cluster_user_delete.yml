@@ -6,7 +6,7 @@
     - netapp.ontap
   vars:
     login: &login
-      state: present
+      state: absent
       #hostname: 192.168.20.140
       hostname: 192.168.77.140
       username: "{{ netapp_username }}"
@@ -23,10 +23,9 @@
   tasks:   
    - name: Deleting local user on cluster
      na_ontap_user:
-      state: absent
       use_rest: always
       <<: *login
-      name: patrick
+      name: "{{ item }}"
       application_dicts:
         - application: http
           authentication_methods: password
@@ -38,3 +37,7 @@
           authentication_methods: password
         - application: service-processor
           authentication_methods: password
+     loop:
+        - patrick
+        - robin
+        - ana
