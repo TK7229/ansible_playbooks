@@ -32,21 +32,21 @@
          - { volume_name: testflexvol1 }
          - { volume_name: testflexvol2 }
          - { volume_name: testflexvol3 }
-     loop_control:
+       is_infinite: False
+       aggregate_name: aggr0_data
+       size: 30
+       size_unit: mb
+       type: rw
+       user_id: 1001
+       group_id: 2002
+       tiering_policy: auto
+       export_policy: default
+       percent_snapshot_space: 60
+       #qos_policy_group: max_performance_gold
+       vserver: cifs
+       wait_for_completion: True
+       #space_slo: none
+       #nvfail_enabled: False
+       comment: ansible created volume
+       loop_control:
        loop_var: name
-          is_infinite: False
-          aggregate_name: aggr0_data
-          size: 30
-          size_unit: mb
-          type: rw
-          user_id: 1001
-          group_id: 2002
-          tiering_policy: auto
-          export_policy: default
-          percent_snapshot_space: 60
-          #qos_policy_group: max_performance_gold
-          vserver: cifs
-          wait_for_completion: True
-          #space_slo: none
-          #nvfail_enabled: False
-          comment: ansible created volume
