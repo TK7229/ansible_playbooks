@@ -13,6 +13,8 @@
       password: "{{ netapp_password }}"
       https: true
       validate_certs: false
+      #vserver: cluster_ontap
+      vserver: cluster_ontap
     svm_login: &svm_login
       hostname: "{{ svm_admin_ip }}"
       username: "{{ svm_admin_username }}"
