@@ -44,6 +44,6 @@
         #nvfail_enabled: False
         comment: ansible created volume
      loop:
-   - testflexvol1
-   - testflexvol2
-   - testflexvol3
+        - testflexvol1
+        - testflexvol2
+        - testflexvol3
