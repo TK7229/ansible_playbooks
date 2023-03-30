@@ -22,18 +22,18 @@
 
   tasks:   
    - name: Create FlexVol
-   - volume:
-       volume_name: "{{ volume.volume_name }}"
-     with_items:
-       - { volume_name: testflexvol1 }
-       - { volume_name: testflexvol2 }
-       - { volume_name: testflexvol3 }
-     loop_control:
-       loop_var: volume
      na_ontap_volume:
         use_rest: always
         <<: *login
         #name: testflexvol1
+        name:
+          volume_name: "{{ name.volume_name }}"
+        with_items:
+          - { volume_name: testflexvol1 }
+          - { volume_name: testflexvol2 }
+          - { volume_name: testflexvol3 }
+     loop_control:
+        loop_var: name
         is_infinite: False
         aggregate_name: aggr0_data
         size: 30
