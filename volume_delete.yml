@@ -23,7 +23,7 @@
   tasks:   
    - name: Delete FlexVol
      na_ontap_volume:
-        #state: absent
+        state: absent
         use_rest: always
         <<: *login
         name: "{{ item }}"
