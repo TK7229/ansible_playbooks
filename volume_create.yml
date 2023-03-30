@@ -21,7 +21,7 @@
       validate_certs: false
 
   tasks:   
-   - name: Create Flexvolume
+   - name: Create FlexVol
      volume:
        volume_name: "{{ volume.volume_name }}"
      with_items:
