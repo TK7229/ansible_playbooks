@@ -25,7 +25,6 @@
      na_ontap_volume:
         use_rest: always
         <<: *login
-        #name: testflexvol1
         name: "{{ item }}"
         is_infinite: False
         aggregate_name: aggr0_data
