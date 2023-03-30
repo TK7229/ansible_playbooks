@@ -13,8 +13,8 @@
       password: "{{ netapp_password }}"
       https: true
       validate_certs: false
-      #vserver: cluster_ontap
-      vserver: cluster_ontap
+      #vserver: cluster-ontap
+      vserver: cluster-ontap
     svm_login: &svm_login
       hostname: "{{ svm_admin_ip }}"
       username: "{{ svm_admin_username }}"
@@ -25,7 +25,6 @@
   tasks:   
    - name: Creating local user on cluster
      na_ontap_user:
-      state: present
       use_rest: always
       <<: *login
       name: "{{ item }}"
