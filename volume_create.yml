@@ -22,7 +22,7 @@
 
   tasks:   
    - name: Create FlexVol
-     volume:
+   - volume:
        volume_name: "{{ volume.volume_name }}"
      with_items:
        - { volume_name: testflexvol1 }
