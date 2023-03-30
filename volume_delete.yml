@@ -26,7 +26,11 @@
         state: absent
         use_rest: always
         <<: *login
-        name: testvol1
+        name: "{{ item }}"
         aggregate_name: aggr0_data
         vserver: cifs
         wait_for_completion: True
+     loop:
+        - testflexvol1
+        - testflexvol2
+        - testflexvol3
