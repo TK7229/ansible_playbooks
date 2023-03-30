@@ -6,7 +6,7 @@
     - netapp.ontap
   vars:
     login: &login
-      state: present
+      state: absent
       #hostname: 192.168.20.140
       hostname: 192.168.77.140
       username: "{{ netapp_username }}"
@@ -23,7 +23,6 @@
   tasks:   
    - name: Delete FlexVol
      na_ontap_volume:
-        state: absent
         use_rest: always
         <<: *login
         name: "{{ item }}"
