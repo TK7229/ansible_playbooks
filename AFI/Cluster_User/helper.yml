@@ -1,0 +1,19 @@
+clusters:
+- clustername: SCL0001
+  disk_fw_file: all.zip
+- clustername: SCL0009
+  disk_fw_file: all.zip
+- clustername: SCL0010
+  disk_fw_file: all.zip
+- clustername: SCL0006
+  disk_fw_file: all.zip
+- clustername: SCL0005
+  disk_fw_file: all.zip
+- clustername: SCL0003
+  shelf_fw_file: all_shelf_fw.zip
+- clustername: SCL0007
+  shelf_fw_file: all_shelf_fw.zip
+- clustername: SCL0004
+  shelf_fw_file: all_shelf_fw.zip
+- clustername: SCL0008
+  shelf_fw_file: all_shelf_fw.zip
