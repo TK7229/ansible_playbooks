@@ -1,19 +1,18 @@
 -
-  name: Ontap REST API
+  name: Ontap Cluster User
   hosts: localhost
-  gather_facts: False
+  gather_facts: no
   collections:
     - netapp.ontap
   vars:
+    ontap_use_https: true
+    ontap_validate_certs: false
     login: &login
       state: present
-      #hostname: 192.168.20.140
-      hostname: 192.168.77.140
       username: "{{ netapp_username }}"
       password: "{{ netapp_password }}"
-      https: true
-      validate_certs: false
-      #vserver: cluster-ontap
+      https: "{{ ontap_use_https }}"
+      validate_certs: "{{ ontap_validate_certs }}"
       vserver: cluster-ontap
     svm_login: &svm_login
       hostname: "{{ svm_admin_ip }}"
@@ -21,6 +20,15 @@
       password: "{{ svm_admin_password }}"
       https: true
       validate_certs: false
+  pre_tasks:
+  - include_vars:
+      file: inventory.yml
+      name: inventory
+  - include_vars:
+      file: helper.yml
+      name: fw
+  - set_fact:
+      cust "{{ inventory | dict2items }}"
 
   tasks:   
    - name: Creating local user on cluster
