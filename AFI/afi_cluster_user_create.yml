@@ -1,0 +1,47 @@
+-
+  name: Ontap REST API
+  hosts: localhost
+  gather_facts: False
+  collections:
+    - netapp.ontap
+  vars:
+    login: &login
+      state: present
+      #hostname: 192.168.20.140
+      hostname: 192.168.77.140
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+      #vserver: cluster-ontap
+      vserver: cluster-ontap
+    svm_login: &svm_login
+      hostname: "{{ svm_admin_ip }}"
+      username: "{{ svm_admin_username }}"
+      password: "{{ svm_admin_password }}"
+      https: true
+      validate_certs: false
+
+  tasks:   
+   - name: Creating local user on cluster
+     na_ontap_user:
+      use_rest: always
+      <<: *login
+      name: "{{ item }}"
+      application_dicts:
+        - application: http
+          authentication_methods: password
+        - application: ssh
+          authentication_methods: password
+        - application: console
+          authentication_methods: password
+        - application: ontapi
+          authentication_methods: password
+        - application: service-processor
+          authentication_methods: password
+      role_name: admin
+      set_password: test1234
+     loop:
+        - patrick
+        - robin
+        - ana
