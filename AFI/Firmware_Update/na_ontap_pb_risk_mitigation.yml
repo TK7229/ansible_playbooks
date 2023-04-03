@@ -1,0 +1,143 @@
+- name: ONTAP Firmware Upgrade
+  hosts: localhost
+  gather_facts: no
+  ignore_errors: true
+  collections:
+  - netapp.ontap
+  vars_prompt:
+  - name: ontap_admin_username
+    private: no
+    prompt: Enter your ONTAP admin username
+  - name: ontap_admin_password
+    prompt: Enter the password for your ONTAP admin user
+  - name: ontap_firmware_url
+    private: no
+    prompt: "Enter the URL to the Firmware package(s) directory suffixed with a \"\
+      /\".\nExample: \"http://<web-server>/path/\" \nIgnore for Software Config risk\
+      \ mitigation"
+
+  vars:
+    ontap_use_https: true
+    ontap_validate_certs: false
+    sw_config_risk_4802_qtree_flat_list: []
+    sw_config_risk_4802_share_flat_list: []
+    sw_config_risk_3824_flat_list: []
+    sw_config_risk_3709_flat_list: []
+    sw_config_risk_5645_flat_list: []
+    sw_objects: []
+    login: &login
+      username: '{{ ontap_admin_username }}'
+      password: '{{ ontap_admin_password }}'
+      https: '{{ ontap_use_https }}'
+      validate_certs: '{{ ontap_validate_certs }}'
+  pre_tasks:
+  - include_vars:
+      file: inventory.yml
+      name: inventory
+  - include_vars:
+      file: helper.yml
+      name: fw
+  - set_fact:
+      cust: '{{ inventory | dict2items }}'
+
+  tasks:
+  - name: Util task to flatten nested cust object
+    set_fact:
+      ip: '{{ ip |default({}) | combine({item.clustername:  item.clusterip})}}'
+    with_items: "{{ cust | map(attribute='value') | flatten | map('dict2items') |\
+      \ flatten | map(attribute='value') | flatten | map(attribute='clusters') | flatten\
+      \ | map('dict2items') | flatten | map(attribute='value') | flatten }}"
+  - name: Util task to include clusters present in both yml files
+    set_fact:
+      clusters: "{{ clusters | default([]) + [{'clustername': ip[item.clustername],\
+        \ 'nodes': item}] }}"
+    with_items:
+    - '{{ fw.clusters }}'
+    when: item.clustername  in ip.keys()
+
+  - name: Run the ONTAP info module to check connectivity
+    na_ontap_info:
+      hostname: '{{ item.clustername }}'
+      <<: *login
+      gather_subset: ontap_system_version
+    register: login
+    with_items: '{{ clusters }}'
+    loop_control:
+      label: '{{ item.clustername }}'
+
+  - name: Populate login results
+    set_fact:
+      login_result: '{{ login_result|default({}) | combine( {item.1.clustername: not
+        item.0.failed} ) }}'
+    with_together:
+    - '{{ login.results }}'
+    - '{{ clusters }}'
+    loop_control:
+      label: '{{ item.1.clustername }}'
+
+  - name: Run the ONTAP command module to validate access permissions
+    na_ontap_command:
+      hostname: '{{ item.clustername }}'
+      <<: *login
+      command: version
+      return_dict: false
+    register: access
+    with_items:
+    - '{{ clusters }}'
+    loop_control:
+      label: '{{ item.clustername }}'
+    when: login_result[item.clustername]
+
+  - name: Sending Pre-run ASUP
+    tags:
+    - disk
+    - shelf
+    - sp
+    na_ontap_command:
+      command: [autosupport invoke -node * -type all -message "Pre-Ansible Firmware
+          Update"]
+      hostname: '{{ item.clustername }}'
+      <<: *login
+    with_items:
+    - '{{ clusters }}'
+    loop_control:
+      label: '{{ item.clustername }}'
+    when: login_result[item.clustername]
+
+  - name: Run the ONTAP Disk Firmware download module
+    tags:
+    - disk
+    na_ontap_firmware_upgrade:
+      hostname: '{{ item.clustername }}'
+      <<: *login
+      package_url: '{{ ontap_firmware_url }}{{ item.nodes.disk_fw_file }}'
+    register: disk_results
+    with_items:
+    - '{{ clusters }}'
+    loop_control:
+      label: '{{ item.clustername }}'
+    when: login_result[item.clustername] and item.nodes.disk_fw_file is defined
+
+  - name: Run the ONTAP Shelf Firmware Download module
+    tags:
+    - shelf
+    na_ontap_firmware_upgrade:
+      hostname: '{{ item.clustername }}'
+      <<: *login
+      package_url: '{{ ontap_firmware_url }}{{ item.nodes.shelf_fw_file }}'
+    register: shelf_results
+    with_items:
+    - '{{ clusters }}'
+    loop_control:
+      label: '{{ item.clustername }}'
+    when: login_result[item.clustername] and item.nodes.shelf_fw_file is defined
+
+  - debug:
+      msg: Disk and Shelf Firmware update is a background process in ONTAP. To check
+        the status of the firmware update, run 'storage disk firmware show-update-status'
+        and 'system node run -node * -command sysconfig -v' commands on the conroller
+        shell.
+    tags:
+    - disk
+    - shelf
+
