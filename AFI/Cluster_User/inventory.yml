@@ -1,0 +1,77 @@
+"Kanton Z\xFCrich Finanzdirektion Amt f\xFCr In formatik":
+  "Kanton Z\xFCrich Finanzdirektion AFI LHW":
+    clusters:
+    - SCL0004:
+        clusterip: 10.96.76.50
+        clustername: SCL0004
+        nodes:
+        - SCLND1004:
+            hostname: SCLND1004
+        - SCLND2004:
+            hostname: SCLND2004
+    - SCL0007:
+        clusterip: 10.96.76.70
+        clustername: SCL0007
+        nodes:
+        - SCLND2007:
+            hostname: SCLND2007
+        - SCLND1007:
+            hostname: SCLND1007
+    - SCL0009:
+        clusterip: 10.60.133.210
+        clustername: SCL0009
+        nodes:
+        - SCLND1009:
+            hostname: SCLND1009
+        - SCLND2009:
+            hostname: SCLND2009
+    - SCL0010:
+        clusterip: 10.60.191.40
+        clustername: SCL0010
+        nodes:
+        - SCLND1010:
+            hostname: SCLND1010
+        - SCLND2010:
+            hostname: SCLND2010
+  "Kanton Z\xFCrich Finanzdirektion Amt f\xFCr In formatik-Z\xFCrich":
+    clusters:
+    - SCL0001:
+        clusterip: 10.96.76.30
+        clustername: SCL0001
+        nodes:
+        - SCLND1001:
+            hostname: SCLND1001
+        - SCLND2001:
+            hostname: SCLND2001
+    - SCL0003:
+        clusterip: 10.96.76.40
+        clustername: SCL0003
+        nodes:
+        - SCLND1003:
+            hostname: SCLND1003
+        - SCLND2003:
+            hostname: SCLND2003
+    - SCL0005:
+        clusterip: 10.60.133.200
+        clustername: SCL0005
+        nodes:
+        - SCLND1005:
+            hostname: SCLND1005
+        - SCLND2005:
+            hostname: SCLND2005
+    - SCL0006:
+        clusterip: 10.60.191.30
+        clustername: SCL0006
+        nodes:
+        - SCLND1006:
+            hostname: SCLND1006
+        - SCLND2006:
+            hostname: SCLND2006
+    - SCL0008:
+        clusterip: 10.96.76.80
+        clustername: SCL0008
+        nodes:
+        - SCLND1008:
+            hostname: SCLND1008
+        - SCLND2008:
+            hostname: SCLND2008
